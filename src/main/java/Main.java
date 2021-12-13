@@ -1,4 +1,3 @@
-package main.java;
 import javafx.animation.PathTransition;
 import javafx.application.Application;
 import javafx.event.EventHandler;

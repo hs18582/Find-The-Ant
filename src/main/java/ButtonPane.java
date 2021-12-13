@@ -1,9 +1,8 @@
-package main.java;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-public class dunno {
+public class ButtonPane {
     public void addButtons(Pane parentPane) {
         HBox[] hb = new HBox[9];
         Button[][] btn = new Button[9][9];

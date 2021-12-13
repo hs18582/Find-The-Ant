@@ -1,4 +1,4 @@
-package main.java; ;// Java Program to create a AnchorPane, adding
+// Java Program to create a AnchorPane, adding
 // label and button to it and also setting the
 // min height and width of AnchorPane then add
 // it to the stage
