@@ -1,5 +1,3 @@
-package main.java;
-
 import javafx.animation.PathTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -27,7 +25,7 @@ import java.util.List;
 public class Level1 extends Application {
     @Override
     public void start(Stage stage) throws FileNotFoundException {
-        Image image = new Image(new FileInputStream("M:\\Year 3\\CE301 Individual Capstone Project Challenge\\FindTheAnt\\src\\main\\java\\Images\\antright.png"));
+        Image image = new Image(new FileInputStream("C:\\Users\\Shiva\\Dropbox\\Essex\\Yr 3\\CE301- Individual Capstone Project Challenge\\FindTheAnt\\src\\main\\java\\Images\\antright.png"));
 
         //Setting the image view
         ImageView imageView = new ImageView(image);
