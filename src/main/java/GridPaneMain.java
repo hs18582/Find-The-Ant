@@ -6,8 +6,6 @@ import javafx.stage.Stage;
 
 public class GridPaneMain extends Application {
 
-    private Object ActionEvent;
-
     public static void main(String[] args) {
         launch(args);
     }

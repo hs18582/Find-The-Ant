@@ -20,7 +20,7 @@ public class Grid extends JFrame{
     }
 
     // MouseListener offers the method mouseClicked(MouseEvent e)
-    private class PanelListener implements MouseListener {
+    private static class PanelListener implements MouseListener {
 
         @Override
         public void mouseClicked(MouseEvent event) {
@@ -31,8 +31,7 @@ public class Grid extends JFrame{
              * since we need the setBackground() method
              */
             Object source = event.getSource();
-            if(source instanceof JPanel){
-                JPanel panelPressed = (JPanel) source;
+            if(source instanceof JPanel panelPressed){
                 panelPressed.setBackground(Color.blue);
             }
         }

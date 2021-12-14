@@ -1,16 +1,11 @@
 import javafx.animation.PathTransition;
 import javafx.application.Application;
-import javafx.event.EventHandler;
-
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -96,11 +91,9 @@ public class Main extends Application {
         playButton.setLayoutX(300);
         playButton.setLayoutY(250);
 
-        playButton.setOnMouseClicked((new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                System.out.println("Hello World");
-                pathTransition.play();
-            }
+        playButton.setOnMouseClicked((event -> {
+            System.out.println("Hello World");
+            pathTransition.play();
         }));
 
         //Creating stop button
@@ -108,11 +101,9 @@ public class Main extends Application {
         stopButton.setLayoutX(100);
         stopButton.setLayoutY(250);
 
-        stopButton.setOnMouseClicked((new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                System.out.println("Hello World");
-                pathTransition.stop();
-            }
+        stopButton.setOnMouseClicked((event -> {
+            System.out.println("Hello World");
+            pathTransition.stop();
         }));
         //Creating a Group object
         Group root = new Group(imageView, playButton, stopButton);
@@ -130,7 +121,7 @@ public class Main extends Application {
         //Displaying the contents of the stage
         stage.show();
     }
-    public static void main(String args[]){
+    public static void main(String[] args){
         launch(args);
     }
 }
