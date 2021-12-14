@@ -24,7 +24,7 @@ Technology experience
 Design complexity
 
 ## GAME FLOWCHART
-![picture](Documentation/Untitled Diagram.jpg) 
+![picture](Documentation/GameFlowchart.jpg) 
 
 
 
