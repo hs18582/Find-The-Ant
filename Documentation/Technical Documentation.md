@@ -32,6 +32,20 @@ Design complexity
 - TIMER
 - BUTTON GRID
 
+## Collision Detection:
+- This is where there will need to be detection of the intersection of two or more objects
+within the game
+- Ant cannot walk through the wall – objects must remain solid
+Collision detection will be needed for when:
+- Ant meets a boundary
+
+## Artificial Intelligence:
+This has been thought about and may be implemented later on
+The Ant will use AI to be smart and predict what move the user may make and move the other way 
+
+## HARDWARE REQUIRMENTS
+- MOUSE
+
 ## GAME FLOWCHART
 Here is the simplified version of the game:
 ![picture](Documentation/Images/GameFlowchart.jpg) 
