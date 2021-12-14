@@ -40,7 +40,7 @@ Collision detection will be needed for when:
 - Ant meets a boundary
 
 ## Artificial Intelligence:
-This has been thought about and may be implemented later on
+This has been thought about and may be implemented later on.
 The Ant will use AI to be smart and predict what move the user may make and move the other way 
 
 ## HARDWARE REQUIRMENTS
