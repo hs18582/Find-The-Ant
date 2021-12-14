@@ -23,6 +23,9 @@ Project management experience
 Technology experience
 Design complexity
 
+## GAME FLOWCHART
+![picture](Documentation/Untitled Diagram.jpg) 
+
 
 
 
