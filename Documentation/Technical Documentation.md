@@ -24,7 +24,12 @@ Technology experience
 Design complexity
 
 ## GAME FLOWCHART
-![picture](Documentation/GameFlowchart.jpg) 
+Here is the simplified version of the game:
+![picture](Documentation/Images/GameFlowchart.jpg) 
+
+## Deadlines
+![picture](Documentation/Images/Deadline.png) 
+
 
 
 
