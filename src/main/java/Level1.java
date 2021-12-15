@@ -109,9 +109,9 @@ public class Level1 extends Application {
                 });
 
                 gridPane.add(btn[i][j], i, j);
-                System.out.println(btn[i][j]);
-                System.out.println(i);
-                System.out.println(j);
+                //System.out.println(btn[i][j]);
+                //System.out.println(i);
+                //System.out.println(j);
             }
         }
 
