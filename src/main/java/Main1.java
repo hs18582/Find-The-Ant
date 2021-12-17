@@ -15,7 +15,7 @@ import javafx.util.Duration;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class Main extends Application {
+public class Main1 extends Application {
     @Override
     public void start(Stage stage) throws FileNotFoundException {
         Image image = new Image(new FileInputStream("M:\\Year 3\\CE301 Individual Capstone Project Challenge\\FindTheAnt\\src\\main\\java\\com\\example\\findtheant\\antright.png"));

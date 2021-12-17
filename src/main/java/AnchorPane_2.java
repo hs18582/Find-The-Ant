@@ -61,7 +61,7 @@ public class AnchorPane_2 extends Application {
         }
     }
 
-    // Main Method
+    // Test.Main Method
     public static void main(String[] args)
     {
 
