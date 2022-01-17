@@ -2,8 +2,6 @@ from Entity import *
 from pygame.locals import *
 import sys
 
-
-
 class Game:
     pass
 ########################################################################################################################
@@ -21,7 +19,8 @@ def main_menu():
 
     while True:
 
-        screen.fill((0, 0, 0))
+        screen.fill(black)
+        ant = pygame.image.load('Images/antMain.png')
 
         writeText("Find The Ant", fontTitle, brown, screen, 3 * screen.get_width() / 4, screen.get_height() / 20)
         mx, my = pygame.mouse.get_pos()
@@ -66,6 +65,8 @@ def main_menu():
 
         pygame.draw.rect(screen, brown, Quit)
         writeText("Exit", fontSmall, green, screen, screen.get_width() / 11, screen.get_height() / 1.1)
+
+        screen.blit(ant, (screen.get_width() / 2, (screen.get_height() / 8) + screen.get_height() / 3.5))
 
         pygame.display.update()
         mainClock.tick(60)
