@@ -1,25 +1,28 @@
-import pygame
+from Entity import *
 from pygame.locals import *
 
 
+########################################################################################################################
+
 def main_menu():
     mainClock = pygame.time.Clock()
-    pygame.init()  # start the program
-    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)  # set screen size to full screen
+    pygame.init()
+    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
     while True:
-        screen.fill((0, 0, 0))  # fill screen with colour black
 
-        False
-        # 1 - left click, 2 - middle click, 3 - right click, 4 - scroll up, 5 - scroll down
+        screen.fill(black)
+
+        writeText("Find The Ant", fontTitle, brown, screen, 3 * screen.get_width() / 4, screen.get_height() / 20)
+
+        click = False
         for event in pygame.event.get():
             if event.type == MOUSEBUTTONDOWN:
-                # if left button click then make true
                 if event.button == 1:
-                    True
+                    click = True
 
-    pygame.display.update()
-    mainClock.tick(60)
+        pygame.display.update()
+        mainClock.tick(60)
 
 
 main_menu()
