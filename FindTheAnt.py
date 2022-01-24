@@ -9,6 +9,14 @@ class Init:
         self.running = True
         self.mainClock = pygame.time.Clock()
 
+    def setN(self, n):
+        self.n = n
+        self.colour = [[green for i in range(n)] for j in range(n)]
+        self.antLocation = [random.randint(0, n - 1), random.randint(0, n - 1)]
+
+    def getN(self):
+        return self.n
+
 
 Init = Init()
 
@@ -17,6 +25,7 @@ Init = Init()
 ########################################################################################################################
 ########################################################################################################################
 def Game():
+    Init.setN(3) # setting a 3x3 grid
     pygame.init()
     while Init.running:
         Init.screen.fill(black)
