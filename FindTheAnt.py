@@ -1,9 +1,24 @@
 from Entity import *
 from pygame.locals import *
-import sys
+import sys, random
 
-class Game:
-    pass
+class Init:
+    def __init__(self):
+        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        self.running = True
+        self.mainClock = pygame.time.Clock()
+Init = Init()
+########################################################################################################################
+########################################################################################################################
+########################################################################################################################
+def Game():
+    pygame.init()
+    while Init.running:
+        Init.screen.fill(black)
+
+    pygame.display.update()
+    Init.mainClock.tick(60)
+
 ########################################################################################################################
 class Rules:
     pass
@@ -11,7 +26,6 @@ class Rules:
 class HighScore:
     pass
 ########################################################################################################################
-
 def main_menu():
     mainClock = pygame.time.Clock()
     pygame.init()
