@@ -5,11 +5,14 @@ import sys, random
 class Init:
     def __init__(self):
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        self.n = 0
         self.running = True
         self.mainClock = pygame.time.Clock()
         self.colour = []
         self.antLocation = []
         self.antFound = False
+        self.queueLocation = [[None for j in range(3)] for i in range(3)]
+        self.queueClicked = [[] for i in range(3)]
 
     def setN(self, n):
         self.n = n
