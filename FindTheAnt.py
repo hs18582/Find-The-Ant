@@ -13,6 +13,7 @@ class Init:
         self.antFound = False
         self.queueLocation = [[None for j in range(3)] for i in range(3)]
         self.queueClicked = [[] for i in range(3)]
+        self.ant = pygame.image.load('Images/ant.png')
 
     def setN(self, n):
         self.n = n
