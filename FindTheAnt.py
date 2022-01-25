@@ -2,12 +2,14 @@ from Entity import *
 from pygame.locals import *
 import sys, random
 
-
 class Init:
     def __init__(self):
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         self.running = True
         self.mainClock = pygame.time.Clock()
+        self.colour = []
+        self.antLocation = []
+        self.antFound = False
 
     def setN(self, n):
         self.n = n
@@ -19,8 +21,6 @@ class Init:
 
 
 Init = Init()
-
-
 ########################################################################################################################
 ########################################################################################################################
 ########################################################################################################################
@@ -29,7 +29,41 @@ def Game():
     pygame.init()
     while Init.running:
         Init.screen.fill(black)
+        mx, my = pygame.mouse.get_pos()
         list_buttons = Grid()
+        count = 0
+
+        if Init.antFound:
+            x = ((Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
+                    Init.antLocation[1] * (Init.width / Init.getN()))) - 25
+            y = ((Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
+                    Init.antLocation[0] * (Init.height / Init.getN()))) - 43
+
+            Init.screen.blit(Init.ant, (x, y))
+            Init.running = False
+            pygame.display.update()
+            pygame.time.delay(2000)
+            Winner()
+
+        click = False
+        for event in pygame.event.get():
+            if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+
+        for i in range(Init.getN()):
+            for j in range(Init.getN()):
+                if list_buttons[i][j].collidepoint((mx, my)):
+                    if click and [i, j] not in Init.queueClicked:
+                        ButtonOpen(i, j)
+
+                        if Init.queueClicked[2]:
+                            ButtonClose(Init.queueClicked[2][0], Init.queueClicked[2][1])
+                        for z in range(2, 0, -1):
+                            Init.queueClicked[z] = Init.queueClicked[z - 1]
+                        Init.queueClicked[0] = [i, j]
+                        count += 1
+                        Init.scoreList.append(count)
 
     pygame.display.update()
     Init.mainClock.tick(60)
@@ -50,6 +84,16 @@ def Grid():
             pygame.draw.rect(Init.screen, Init.colour[i][j], list_buttons[i][j])  # CREATING A GREEN RECTANGLE
 
     return list_buttons
+
+def ButtonOpen(x, y):
+    Init.colour[x][y] = brown
+    if Init.antLocation == [x, y]:
+        Init.antFound = True
+
+
+def ButtonClose(x, y):
+    Init.colour[x][y] = green
+
 
 
 ########################################################################################################################
