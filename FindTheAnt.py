@@ -15,6 +15,7 @@ class Init:
         self.queueLocation = [[None for j in range(3)] for i in range(3)]
         self.queueClicked = [[] for i in range(3)]
         self.ant = pygame.image.load('Images/ant.png')
+        self.scoreList = []
 
     def setN(self, n):
         self.n = n
@@ -39,6 +40,10 @@ def Game():
         mx, my = pygame.mouse.get_pos()
         list_buttons = Grid()
         count = 0
+
+        Tscore = len(Init.scoreList)
+        writeText("Score:  " + str(Tscore), fontSmall, green, Init.screen, 3 * Init.screen.get_width() / 4,
+                  Init.screen.get_height() / 20)
 
         if Init.antFound:
             x = ((Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
