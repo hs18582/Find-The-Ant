@@ -2,6 +2,7 @@ from Entity import *
 from pygame.locals import *
 import sys, random
 
+
 class Init:
     def __init__(self):
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
@@ -25,11 +26,13 @@ class Init:
 
 
 Init = Init()
+
+
 ########################################################################################################################
 ########################################################################################################################
 ########################################################################################################################
 def Game():
-    Init.setN(3) # setting a 3x3 grid
+    Init.setN(3)  # setting a 3x3 grid
     pygame.init()
     while Init.running:
         Init.screen.fill(black)
@@ -48,6 +51,30 @@ def Game():
             pygame.display.update()
             pygame.time.delay(2000)
             Winner()
+        else:
+            if Init.queueLocation[2][2] == True and [Init.queueLocation[2][0],
+                                                     Init.queueLocation[2][1]] in Init.queueClicked:
+                x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
+                        Init.queueLocation[2][1] * (Init.width / Init.getN()))
+                y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
+                        Init.queueLocation[2][0] * (Init.height / Init.getN()))
+                pygame.draw.circle(Init.screen, red, (x, y), 20)
+
+            if Init.queueLocation[1][2] == True and [Init.queueLocation[1][0],
+                                                     Init.queueLocation[1][1]] in Init.queueClicked:
+                x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
+                        Init.queueLocation[1][1] * (Init.width / Init.getN()))
+                y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
+                        Init.queueLocation[1][0] * (Init.height / Init.getN()))
+                pygame.draw.circle(Init.screen, orange, (x, y), 20)
+
+            if Init.queueLocation[0][2] == True and [Init.queueLocation[0][0],
+                                                     Init.queueLocation[0][1]] in Init.queueClicked:
+                x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
+                        Init.queueLocation[0][1] * (Init.width / Init.getN()))
+                y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
+                        Init.queueLocation[0][0] * (Init.height / Init.getN()))
+                pygame.draw.circle(Init.screen, yellow, (x, y), 20)
 
         click = False
         for event in pygame.event.get():
@@ -92,6 +119,7 @@ def Grid():
 
     return list_buttons
 
+
 def ButtonOpen(x, y):
     Init.colour[x][y] = brown
     if Init.antLocation == [x, y]:
@@ -100,6 +128,7 @@ def ButtonOpen(x, y):
 
 def ButtonClose(x, y):
     Init.colour[x][y] = green
+
 
 def MoveAnt():
     x, y = Init.antLocation[0], Init.antLocation[1]
@@ -125,6 +154,20 @@ def MoveAnt():
     Init.antLocation = possiblemoves[index]
 
 
+def Pheromone():
+    droppingPoint = 50
+    # is the tipping point if number > 50 then drop if less hold( if num = 50 then 50% of being dropped
+
+    for z in range(2, 0, -1):
+        Init.queueLocation[z] = Init.queueLocation[z - 1]
+    if random.randint(0, 100) >= droppingPoint:
+        if [Init.antLocation[0], Init.antLocation[1], True] == Init.queueLocation[1]:
+            Init.queueLocation[1][2] = False
+        if [Init.antLocation[0], Init.antLocation[1], True] == Init.queueLocation[2]:
+            Init.queueLocation[2][2] = False
+        Init.queueLocation[0] = [Init.antLocation[0], Init.antLocation[1], True]
+    else:
+        Init.queueLocation[0] = [Init.antLocation[0], Init.antLocation[1], False]
 
 
 ########################################################################################################################
