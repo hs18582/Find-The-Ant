@@ -69,6 +69,9 @@ def Game():
                         count += 1
                         Init.scoreList.append(count)
 
+                        if not Init.antFound:
+                            MoveAnt()
+
     pygame.display.update()
     Init.mainClock.tick(60)
 
@@ -97,6 +100,30 @@ def ButtonOpen(x, y):
 
 def ButtonClose(x, y):
     Init.colour[x][y] = green
+
+def MoveAnt():
+    x, y = Init.antLocation[0], Init.antLocation[1]
+    possiblemoves = [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]]
+    if possiblemoves[0][0] == Init.getN():
+        possiblemoves[0][0] = 0
+
+    if possiblemoves[1][0] == -1:
+        possiblemoves[1][0] = Init.getN() - 1
+
+    if possiblemoves[2][1] == Init.getN():
+        possiblemoves[2][1] = 0
+
+    if possiblemoves[3][1] == -1:
+        possiblemoves[3][1] = Init.getN() - 1
+
+    for i in range(3, -1, -1):
+        if possiblemoves[i] in Init.queueClicked:
+            possiblemoves.pop(i)
+
+    index = random.randint(0, len(possiblemoves) - 1)
+
+    Init.antLocation = possiblemoves[index]
+
 
 
 
