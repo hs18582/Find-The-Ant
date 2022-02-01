@@ -10,6 +10,8 @@ class Init:
         self.running = True
         self.mainClock = pygame.time.Clock()
         self.colour = []
+        self.width = 600
+        self.height = 600
         self.antLocation = []
         self.antFound = False
         self.queueLocation = [[None for j in range(3)] for i in range(3)]
@@ -40,6 +42,12 @@ def Game():
         mx, my = pygame.mouse.get_pos()
         list_buttons = Grid()
         count = 0
+        start_ticks = pygame.time.get_ticks()
+
+        seconds = (pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
+        if seconds > 180:  # if more than 10 seconds close the game
+            pygame.display.update()
+            Loser()
 
         Tscore = len(Init.scoreList)
         writeText("Score:  " + str(Tscore), fontSmall, green, Init.screen, 3 * Init.screen.get_width() / 4,
