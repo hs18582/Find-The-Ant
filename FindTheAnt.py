@@ -65,28 +65,19 @@ def Game():
             pygame.time.delay(2000)
             Winner()
         else:
-            if Init.queueLocation[2][2] == True and [Init.queueLocation[2][0],
-                                                     Init.queueLocation[2][1]] in Init.queueClicked:
-                x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
-                        Init.queueLocation[2][1] * (Init.width / Init.getN()))
-                y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
-                        Init.queueLocation[2][0] * (Init.height / Init.getN()))
+            if Init.queueLocation[2][2] == True and [Init.queueLocation[2][0],Init.queueLocation[2][1]] in Init.queueClicked:
+                x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (Init.queueLocation[2][1] * (Init.width / Init.getN()))
+                y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (Init.queueLocation[2][0] * (Init.height / Init.getN()))
                 pygame.draw.circle(Init.screen, red, (x, y), 20)
 
-            if Init.queueLocation[1][2] == True and [Init.queueLocation[1][0],
-                                                     Init.queueLocation[1][1]] in Init.queueClicked:
-                x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
-                        Init.queueLocation[1][1] * (Init.width / Init.getN()))
-                y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
-                        Init.queueLocation[1][0] * (Init.height / Init.getN()))
+            if Init.queueLocation[1][2] == True and [Init.queueLocation[1][0], Init.queueLocation[1][1]] in Init.queueClicked:
+                x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (Init.queueLocation[1][1] * (Init.width / Init.getN()))
+                y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + ( Init.queueLocation[1][0] * (Init.height / Init.getN()))
                 pygame.draw.circle(Init.screen, orange, (x, y), 20)
 
-            if Init.queueLocation[0][2] == True and [Init.queueLocation[0][0],
-                                                     Init.queueLocation[0][1]] in Init.queueClicked:
-                x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
-                        Init.queueLocation[0][1] * (Init.width / Init.getN()))
-                y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
-                        Init.queueLocation[0][0] * (Init.height / Init.getN()))
+            if Init.queueLocation[0][2] == True and [Init.queueLocation[0][0],Init.queueLocation[0][1]] in Init.queueClicked:
+                x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (Init.queueLocation[0][1] * (Init.width / Init.getN()))
+                y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (Init.queueLocation[0][0] * (Init.height / Init.getN()))
                 pygame.draw.circle(Init.screen, yellow, (x, y), 20)
 
         click = False
@@ -182,7 +173,20 @@ def Pheromone():
     else:
         Init.queueLocation[0] = [Init.antLocation[0], Init.antLocation[1], False]
 
-
+def playAgain():
+    Init.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    Init.running = True
+    Init.mainClock = pygame.time.Clock()
+    Init.colour = [[green for i in range(Init.getN())] for j in range(Init.getN())]
+    Init.width = 600
+    Init.height = 600
+    Init.antLocation = [random.randint(0, Init.getN() - 1), random.randint(0, Init.getN() - 1)]
+    Init.antFound = False
+    Init.queueLocation = [[None for j in range(3)] for i in range(3)]
+    Init.queueClicked = [[] for i in range(3)]
+    Init.ant = pygame.image.load('Images/ant.png')
+    Init.scoreList = []
+    #Init.antmini = pygame.image.load('Images/antMini.png')  # https://www.pinclipart.com/maxpin/iTbwbmJ/
 ########################################################################################################################
 class Rules:
     pass
