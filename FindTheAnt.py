@@ -246,7 +246,13 @@ def Winner():
         mainClock.tick(60)
 ########################################################################################################################
 def Loser():
-    pass
+    mainClock = pygame.time.Clock()
+    pygame.init()
+    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    LoserRunning = True
+    antmini = pygame.image.load('Images/antMini.png')  # https://www.pinclipart.com/maxpin/iTbwbmJ/
+
+
 
 
 ########################################################################################################################
