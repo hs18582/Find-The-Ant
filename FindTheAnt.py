@@ -221,9 +221,29 @@ def Winner():
         writeText(str(Tscore), fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
                   screen.get_height() / 2)
 
+        # Creating and Drawing back button
+        mx, my = pygame.mouse.get_pos()
+        Back = pygame.Rect(3 * screen.get_width() / 4, 7 * screen.get_height() / 10, screen.get_width() / 4,
+                           screen.get_height() / 10)
+        if Back.collidepoint((mx, my)):
+            if click:
+                pygame.time.delay(500)
+                main_menu()
+        pygame.draw.rect(screen, green, Back)
+        writeText("Back", fontSmall, brown, screen, 4 * screen.get_width() / 5, 14.5 * screen.get_height() / 20)
 
+        Reset = pygame.Rect(0 * screen.get_width(), 7 * screen.get_height() / 10, screen.get_width() / 4,
+                            screen.get_height() / 10)
+        if Reset.collidepoint((mx, my)):
+            if click:
+                pygame.time.delay(500)
+                playAgain()
+                Game()
+        pygame.draw.rect(screen, green, Reset)
+        writeText("Play Again?", fontSmall, brown, screen, 1 * screen.get_width() / 10, 14.5 * screen.get_height() / 20)
 
-
+        pygame.display.update()
+        mainClock.tick(60)
 ########################################################################################################################
 def Loser():
     pass
