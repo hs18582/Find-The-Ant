@@ -201,7 +201,27 @@ def playAgain():
 
 ########################################################################################################################
 def Winner():
-    pass
+    pygame.init()
+
+    mainClock = pygame.time.Clock()
+    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    Tscore = len(Init.scoreList)
+
+    while True:
+        screen.fill((0, 0, 0))
+
+        click = False
+        for event in pygame.event.get():
+            if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+
+        writeText("Your score is: ", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                  8 * screen.get_height() / 20)
+        writeText(str(Tscore), fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                  screen.get_height() / 2)
+
+
 
 
 ########################################################################################################################
