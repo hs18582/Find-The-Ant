@@ -199,7 +199,6 @@ def playAgain():
 
 def Winner():
     pygame.init()
-
     mainClock = pygame.time.Clock()
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     Tscore = len(Init.scoreList)
@@ -247,7 +246,6 @@ def Loser():
     pygame.init()
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     LoserRunning = True
-    antmini = pygame.image.load('Images/antMini.png')  # https://www.pinclipart.com/maxpin/iTbwbmJ/
 
     while LoserRunning:
         screen.fill((0, 0, 0))
