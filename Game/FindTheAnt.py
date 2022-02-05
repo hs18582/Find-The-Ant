@@ -326,12 +326,28 @@ def Rules():
         writeText("BUT remember .. the ant doesn't always have to leave a clue behind!)", fontRules, (255, 255, 255),
                   screen, screen.get_width() / 2, 18.5 * screen.get_height() / 20)
 
+       # Init.screen.blit(Init.ant, (5 * screen.get_width() / 20, 16 * screen.get_height() / 20))
+       # pygame.draw.circle(Init.screen, red, (x, y), 20)
+      #  pygame.draw.circle(Init.screen, orange, (x, y), 20)
+      #  pygame.draw.circle(Init.screen, yellow, (x, y), 20)
+
 
         click = False
         for event in pygame.event.get():
             if event.type == MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
+
+        # Creating and Drawing back button
+        mx, my = pygame.mouse.get_pos()
+        Back = pygame.Rect(3 * screen.get_width() / 4, 7 * screen.get_height() / 10, screen.get_width() / 4,
+                           screen.get_height() / 10)
+        if Back.collidepoint((mx, my)):
+            if click:
+                pygame.time.delay(500)
+                main_menu()
+        pygame.draw.rect(screen, green, Back)
+        writeText("Back", fontSmall, brown, screen, 4 * screen.get_width() / 5, 14.5 * screen.get_height() / 20)
 
         pygame.display.update()
         mainClock.tick(60)
