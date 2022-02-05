@@ -326,10 +326,10 @@ def Rules():
         writeText("BUT remember .. the ant doesn't always have to leave a clue behind!)", fontRules, (255, 255, 255),
                   screen, screen.get_width() / 2, 18.5 * screen.get_height() / 20)
 
-       # Init.screen.blit(Init.ant, (5 * screen.get_width() / 20, 16 * screen.get_height() / 20))
-       # pygame.draw.circle(Init.screen, red, (x, y), 20)
-      #  pygame.draw.circle(Init.screen, orange, (x, y), 20)
-      #  pygame.draw.circle(Init.screen, yellow, (x, y), 20)
+        Init.screen.blit(ant, (8 * screen.get_width() / 20, 16.5 * screen.get_height() / 20))
+        pygame.draw.circle(Init.screen, yellow, (5 * screen.get_width() / 20, 13 * screen.get_height() / 20), 20)
+        pygame.draw.circle(Init.screen, orange, (5 * screen.get_width() / 20, 14.25 * screen.get_height() / 20), 20)
+        pygame.draw.circle(Init.screen, red, (5 * screen.get_width() / 20, 15.5 * screen.get_height() / 20), 20)
 
 
         click = False
