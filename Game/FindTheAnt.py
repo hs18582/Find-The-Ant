@@ -2,7 +2,6 @@ from Entity import *
 from pygame.locals import *
 import sys, random
 
-
 class Init:
     def __init__(self):
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
@@ -29,7 +28,6 @@ class Init:
 
 
 Init = Init()
-
 
 ########################################################################################################################
 ########################################################################################################################
