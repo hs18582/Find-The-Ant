@@ -29,6 +29,8 @@ class Init:
 
 
 Init = Init()
+
+
 ########################################################################################################################
 ########################################################################################################################
 ########################################################################################################################
@@ -66,25 +68,25 @@ def Game():
             if Init.queueLocation[2][2] == True and [Init.queueLocation[2][0],
                                                      Init.queueLocation[2][1]] in Init.queueClicked:
                 x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
-                            Init.queueLocation[2][1] * (Init.width / Init.getN()))
+                        Init.queueLocation[2][1] * (Init.width / Init.getN()))
                 y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
-                            Init.queueLocation[2][0] * (Init.height / Init.getN()))
+                        Init.queueLocation[2][0] * (Init.height / Init.getN()))
                 pygame.draw.circle(Init.screen, red, (x, y), 20)
 
             if Init.queueLocation[1][2] == True and [Init.queueLocation[1][0],
                                                      Init.queueLocation[1][1]] in Init.queueClicked:
                 x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
-                            Init.queueLocation[1][1] * (Init.width / Init.getN()))
+                        Init.queueLocation[1][1] * (Init.width / Init.getN()))
                 y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
-                            Init.queueLocation[1][0] * (Init.height / Init.getN()))
+                        Init.queueLocation[1][0] * (Init.height / Init.getN()))
                 pygame.draw.circle(Init.screen, orange, (x, y), 20)
 
             if Init.queueLocation[0][2] == True and [Init.queueLocation[0][0],
                                                      Init.queueLocation[0][1]] in Init.queueClicked:
                 x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
-                            Init.queueLocation[0][1] * (Init.width / Init.getN()))
+                        Init.queueLocation[0][1] * (Init.width / Init.getN()))
                 y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
-                            Init.queueLocation[0][0] * (Init.height / Init.getN()))
+                        Init.queueLocation[0][0] * (Init.height / Init.getN()))
                 pygame.draw.circle(Init.screen, yellow, (x, y), 20)
 
         click = False
@@ -195,6 +197,8 @@ def playAgain():
     Init.ant = pygame.image.load('Images/ant.png')
     Init.scoreList = []
     # Init.antmini = pygame.image.load('Images/antMini.png')  # https://www.pinclipart.com/maxpin/iTbwbmJ/
+
+
 ########################################################################################################################
 
 def Winner():
@@ -240,6 +244,8 @@ def Winner():
 
         pygame.display.update()
         mainClock.tick(60)
+
+
 ########################################################################################################################
 def Loser():
     mainClock = pygame.time.Clock()
@@ -283,11 +289,52 @@ def Loser():
 
         pygame.display.update()
         mainClock.tick(60)
+
+
 ########################################################################################################################
-class Rules:
-    pass
+def Rules():
+    pygame.init()
+
+    mainClock = pygame.time.Clock()
+    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    RuleRunning = True
+
+    while RuleRunning:
+        screen.fill(black)
+        fontRules = pygame.font.SysFont(None, 40)
+
+        writeText("Rules:", fontTitle, (255, 255, 255), screen, screen.get_width() / 2, screen.get_height() / 20)
+        writeText("Objective: Find the ant by uncovering the boxes before time runs out!", fontRules, (255, 255, 255),
+                  screen, screen.get_width() / 2, screen.get_height() / 7.5)
+        writeText("1. The game ends either by finding the ant or the 3 minute timer runs out", fontRules,
+                  (255, 255, 255), screen, screen.get_width() / 2, 5 * screen.get_height() / 20)
+        writeText("2. There are 3 levels: Easy, Medium and Hard", fontRules, (255, 255, 255), screen,
+                  screen.get_width() / 2, 6.5 * screen.get_height() / 20)
+        writeText("3. A Pheromone and its colour can tell where the ant has/will be", fontRules, (255, 255, 255),
+                  screen, screen.get_width() / 2, 8 * screen.get_height() / 20)
+        writeText("4. There are 5 possible options that can be uncovered: ", fontRules, (255, 255, 255), screen,
+                  screen.get_width() / 2, 9.5 * screen.get_height() / 20)
+        writeText("- empty patch of soil", fontRules, (255, 255, 255), screen, screen.get_width() / 2,
+                  11 * screen.get_height() / 20)
+        writeText("- Yellow pheromone (ant was there 1 day ago)", fontRules, (255, 255, 255), screen,
+                  screen.get_width() / 2, 12.5 * screen.get_height() / 20)
+        writeText("- Orange pheromone (ant was there 2 days ago)", fontRules, (255, 255, 255), screen,
+                  screen.get_width() / 2, 14 * screen.get_height() / 20)
+        writeText("- Red pheromone (ant was there 3 days ago)", fontRules, (255, 255, 255), screen,
+                  screen.get_width() / 2, 15.5 * screen.get_height() / 20)
+        writeText("- An Ant", fontRules, (255, 255, 255), screen, screen.get_width() / 2, 17 * screen.get_height() / 20)
+        writeText("BUT remember .. the ant doesn't always have to leave a clue behind!)", fontRules, (255, 255, 255),
+                  screen, screen.get_width() / 2, 18.5 * screen.get_height() / 20)
 
 
+        click = False
+        for event in pygame.event.get():
+            if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+
+        pygame.display.update()
+        mainClock.tick(60)
 ########################################################################################################################
 class HighScore:
     pass
