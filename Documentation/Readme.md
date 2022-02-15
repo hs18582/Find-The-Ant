@@ -1,4 +1,5 @@
 # FIND THE ANT
+![picture](Documentation/Images/README/Ant.png)
 
 It is a game for young children, to keep them entertained when they are bored. It helps them to develop by learning to think strategically. Bright colours and friendly images, make it as eye catching as possible
 
@@ -26,6 +27,7 @@ The [Documentation](https://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_ham
 - [Testing Report](https://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_hamsini/-/blob/master/Documentation/TestingReport.md)
 
 # Preview
+
 
 # Author
 Hamsini Shivakumar
