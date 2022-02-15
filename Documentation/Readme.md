@@ -3,7 +3,7 @@
 It is a game for young children, to keep them entertained when they are bored. It helps them to develop by learning to think strategically. Bright colours and friendly images, make it as eye catching as possible
 
 ## AIM
-- Develop hand and eye coordination 
+- Develop hand and eye coordination
 - Learn to think strategically
 
 # Installation
