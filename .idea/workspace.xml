@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249f9be2-349a-4d67-9e79-e4a868177b20" name="Default Changelist" comment="Adding Documentation files">
-      <change afterPath="$PROJECT_DIR$/Documentation/Images/README/Ant.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Documentation/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" />
-    </list>
+    <list default="true" id="249f9be2-349a-4d67-9e79-e4a868177b20" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,7 +38,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FindAnt" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -50,7 +46,29 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RunManager" selected="Python.Test">
+  <component name="RunManager" selected="Python.FindTheAnt (1)">
+    <configuration name="FindTheAnt (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FindTheAnt" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Game" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Game/FindTheAnt.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="FindTheAnt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FindTheAnt" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -119,6 +137,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.FindTheAnt (1)" />
         <item itemvalue="Python.Test" />
         <item itemvalue="Python.FindTheAnt" />
         <item itemvalue="Python.Menu" />
@@ -145,7 +164,7 @@
       <workItem from="1643974195623" duration="915000" />
       <workItem from="1644078122966" duration="5205000" />
       <workItem from="1644334149957" duration="22000" />
-      <workItem from="1644939016743" duration="622000" />
+      <workItem from="1644939016743" duration="1082000" />
     </task>
     <task id="LOCAL-00001" summary="This is a test to change from Java to Python">
       <created>1640011911205</created>
@@ -301,7 +320,21 @@
       <option name="project" value="LOCAL" />
       <updated>1644083245080</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Adding Documentation files and image folder for Readme.md">
+      <created>1644939667281</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1644939667281</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Adding Documentation files and image folder for Readme.md">
+      <created>1644939845118</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1644939845118</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +375,8 @@
     <MESSAGE value="Adding Back button plus images" />
     <MESSAGE value="Refactoring Ant and phermone image location on rules" />
     <MESSAGE value="Adding Documentation files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Documentation files" />
+    <MESSAGE value="Adding Documentation files and image folder for Readme.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Documentation files and image folder for Readme.md" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FindTheAnt$FindTheAnt.coverage" NAME="FindTheAnt Coverage Results" MODIFIED="1643028566102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
