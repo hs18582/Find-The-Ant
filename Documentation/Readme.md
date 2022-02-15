@@ -27,7 +27,7 @@ The [Documentation](https://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_ham
 - [Testing Report](https://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_hamsini/-/blob/master/Documentation/TestingReport.md)
 
 # Preview
-
+![picture](Documentation/Images/README/Game.png)
 
 # Author
 Hamsini Shivakumar
