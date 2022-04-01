@@ -22,11 +22,11 @@ Here is where to [download PyCharm ](https://www.jetbrains.com/pycharm/download/
 Once you have downloaded Pycharm, would would need to make sure the interpreter is python 3.8. Then open up the project in Pycharm. 
 Open up the terminal `pip install pygame`. Hopefully before this you would have pip automatically installed. Run the game. Pygame can also be added through the IDE, libraries.
 
-### Python 3.8
+### [Python 3.8](https://www.python.org/downloads/release/python-358/)
 Python is a programming language that supports objects, modules, threads, and automated memory management. Its benefits are well established. It is easy to use, portable, extendable, has a built-in structure, and is open-source.
 
 Eventhough the game was created in Pycharm, it can be run and edited in Python IDLE as well. In this case pygame should be downloaded through the PC terminal
 
-### Pygame
+### [Pygame](https://www.pygame.org/download.shtml)
 Pygame is a collection of Python modules for creating video games that is cross-platform. It's a Python-based collection of computer graphics and sound libraries.
 
