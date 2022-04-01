@@ -308,23 +308,18 @@ def Rules():
                   (255, 255, 255), screen, screen.get_width() / 2, 5 * screen.get_height() / 20)
         writeText("2. There are 3 levels: Easy, Medium and Hard", fontRules, (255, 255, 255), screen,
                   screen.get_width() / 2, 6.5 * screen.get_height() / 20)
-        writeText("3. A Pheromone and its colour can tell where the ant has/will be", fontRules, (255, 255, 255),
-                  screen, screen.get_width() / 2, 8 * screen.get_height() / 20)
-        writeText("4. There are 5 possible options that can be uncovered: ", fontRules, (255, 255, 255), screen,
+
+        writeText("3. There are 5 possible options that can be uncovered: ", fontRules, (255, 255, 255), screen,
                   screen.get_width() / 2, 9.5 * screen.get_height() / 20)
         writeText("- empty patch of soil", fontRules, (255, 255, 255), screen, screen.get_width() / 2,
                   11 * screen.get_height() / 20)
-        writeText("- Yellow pheromone (ant was there 1 day ago)", fontRules, (255, 255, 255), screen,
-                  screen.get_width() / 2, 12.5 * screen.get_height() / 20)
-        writeText("- Orange pheromone (ant was there 2 days ago)", fontRules, (255, 255, 255), screen,
-                  screen.get_width() / 2, 14 * screen.get_height() / 20)
-        writeText("- Red pheromone (ant was there 3 days ago)", fontRules, (255, 255, 255), screen,
-                  screen.get_width() / 2, 15.5 * screen.get_height() / 20)
+        writeText("3. A Pheromone (its colour can tell where the ant has/will be)", fontRules, (255, 255, 255),
+                  screen, screen.get_width() / 2, 8 * screen.get_height() / 20)
         writeText("- An Ant", fontRules, (255, 255, 255), screen, screen.get_width() / 2, 17 * screen.get_height() / 20)
         writeText("BUT remember .. the ant doesn't always have to leave a clue behind!)", fontRules, (255, 255, 255),
                   screen, screen.get_width() / 2, 18.5 * screen.get_height() / 20)
 
-        Init.screen.blit(ant, (8 * screen.get_width() / 20, 16.5 * screen.get_height() / 20))
+        Init.screen.blit(Init.ant, (8 * screen.get_width() / 20, 16.5 * screen.get_height() / 20))
         pygame.draw.circle(Init.screen, yellow, (5 * screen.get_width() / 20, 13 * screen.get_height() / 20), 20)
         pygame.draw.circle(Init.screen, orange, (5 * screen.get_width() / 20, 14.25 * screen.get_height() / 20), 20)
         pygame.draw.circle(Init.screen, red, (5 * screen.get_width() / 20, 15.5 * screen.get_height() / 20), 20)
@@ -335,6 +330,16 @@ def Rules():
             if event.type == MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
+
+        # Creating and Drawing back button
+        mx, my = pygame.mouse.get_pos()
+        Back = pygame.Rect(3 * screen.get_width() / 4, 7 * screen.get_height() / 10, screen.get_width() / 4,screen.get_height() / 10)
+        if Back.collidepoint((mx, my)):
+            if click:
+                pygame.time.delay(500)
+                main_menu()
+        pygame.draw.rect(screen, green, Back)
+        writeText("Back", fontSmall, brown, screen, 4 * screen.get_width() / 5, 14.5 * screen.get_height() / 20)
 
         # Creating and Drawing back button
         mx, my = pygame.mouse.get_pos()
