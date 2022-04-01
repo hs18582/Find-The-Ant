@@ -1,4 +1,4 @@
-# Implimentation Report
+# Implementation Report
 
 # List of Contents
 
@@ -30,3 +30,20 @@ Eventhough the game was created in Pycharm, it can be run and edited in Python I
 ### [Pygame](https://www.pygame.org/download.shtml)
 Pygame is a collection of Python modules for creating video games that is cross-platform. It's a Python-based collection of computer graphics and sound libraries.
 
+## Why is the code written in this way
+The format of the code written in a specific way so it is easy to find. It starts of the with the class where the variables are initialsed and used thorughout the code. The iInitialising class is added in to get rid of any global variables. Then the rest of the order is in which it it shown in the game except main menu which is at the end as it calls all/most functions. 
+The order is the following:
+* Initialising Class
+    * setN function
+    * getN function
+    * setHighscore function
+    * getHighscore function
+* Write to file function
+* Levels function
+* Game function
+* Winner function
+* Loser function
+* Highscore function
+* Rules function
+* Pheromone colours function
+* Main menu function
