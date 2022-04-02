@@ -53,6 +53,8 @@ def Level():
                            2 * screen.get_height() / 20)
         Medium = pygame.Rect(7 * screen.get_width() / 20, 9 * screen.get_height() / 20, 7 * screen.get_width() / 20,
                              2 * screen.get_height() / 20)
+        Hard = pygame.Rect(7 * screen.get_width() / 20, 14 * screen.get_height() / 20, 7 * screen.get_width() / 20,
+                           2 * screen.get_height() / 20)
 
         if Easy.collidepoint((mx, my)):
             if click:
@@ -64,12 +66,21 @@ def Level():
                 Init.setN(5)
                 playAgain()
                 Game()
+        if Hard.collidepoint((mx, my)):
+            if click:
+                Init.setN(10)
+                playAgain()
+                Game()
+
 
         pygame.draw.rect(screen, green, Easy)
         writeText("Easy", fontSmall, brown, screen, screen.get_width() / 2, screen.get_height() / 4.6)
 
         pygame.draw.rect(screen, brown, Medium)
         writeText("Medium", fontSmall, green, screen, screen.get_width() / 2, screen.get_height() / 2.12)
+
+        pygame.draw.rect(screen, green, Hard)
+        writeText("Hard", fontSmall, brown, screen, screen.get_width() / 2, screen.get_height() / 1.4)
 
         pygame.display.update()
         mainClock.tick(60)
