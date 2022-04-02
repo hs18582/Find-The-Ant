@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249f9be2-349a-4d67-9e79-e4a868177b20" name="Default Changelist" comment="" />
+    <list default="true" id="249f9be2-349a-4d67-9e79-e4a868177b20" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +22,6 @@
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -172,7 +173,7 @@
       <workItem from="1648645599391" duration="1212000" />
       <workItem from="1648811097143" duration="5363000" />
       <workItem from="1648908086332" duration="1066000" />
-      <workItem from="1648909733867" duration="1647000" />
+      <workItem from="1648909733867" duration="3577000" />
     </task>
     <task id="LOCAL-00001" summary="This is a test to change from Java to Python">
       <created>1640011911205</created>
@@ -433,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648917126618</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Adding Readme.md">
+      <created>1648917302932</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1648917302932</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -452,7 +460,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Refactoring code so that the code works and grid becomes buttons" />
     <MESSAGE value="Added code for if the ant is found it would blit on the screen" />
     <MESSAGE value="Added code to add the ant in a random location and move" />
     <MESSAGE value="Adding Phermones function and drawing on the grid" />
@@ -477,7 +484,8 @@
     <MESSAGE value="Refactoring and tidying code" />
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Adding basic report structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding basic report structure" />
+    <MESSAGE value="Adding Readme.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Readme.md" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FindTheAnt$FindTheAnt.coverage" NAME="FindTheAnt Coverage Results" MODIFIED="1643028566102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
