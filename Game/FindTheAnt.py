@@ -251,7 +251,6 @@ def playAgain():
 
 
 ########################################################################################################################
-
 def Winner():
     pygame.init()
     mainClock = pygame.time.Clock()
@@ -346,37 +345,33 @@ def Loser():
 def Rules():
     pygame.init()
 
+    ant = pygame.image.load('Images/antRules.png')
     mainClock = pygame.time.Clock()
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     RuleRunning = True
 
     while RuleRunning:
         screen.fill(black)
-        fontRules = pygame.font.SysFont(None, 40)
+        mx, my = pygame.mouse.get_pos()
 
         writeText("Rules:", fontTitle, (255, 255, 255), screen, screen.get_width() / 2, screen.get_height() / 20)
-        writeText("Objective: Find the ant by uncovering the boxes before time runs out!", fontRules, (255, 255, 255),
-                  screen, screen.get_width() / 2, screen.get_height() / 7.5)
-        writeText("1. The game ends either by finding the ant or the 3 minute timer runs out", fontRules,
+        writeText("Objective: Find the ant by uncovering the boxes before time runs out!", fonttiny, (255, 255, 255),
+                  screen, screen.get_width() / 2, 3.5* screen.get_height() / 20)
+        writeText("1. The game ends either by finding the ant or the 3 minute timer runs out", fonttiny,
                   (255, 255, 255), screen, screen.get_width() / 2, 5 * screen.get_height() / 20)
-        writeText("2. There are 3 levels: Easy, Medium and Hard", fontRules, (255, 255, 255), screen,
+        writeText("2. There are 3 levels: Easy, Medium and Hard", fonttiny, (255, 255, 255), screen,
                   screen.get_width() / 2, 6.5 * screen.get_height() / 20)
-
-        writeText("3. There are 5 possible options that can be uncovered: ", fontRules, (255, 255, 255), screen,
-                  screen.get_width() / 2, 9.5 * screen.get_height() / 20)
-        writeText("- empty patch of soil", fontRules, (255, 255, 255), screen, screen.get_width() / 2,
-                  11 * screen.get_height() / 20)
-        writeText("3. A Pheromone (its colour can tell where the ant has/will be)", fontRules, (255, 255, 255),
-                  screen, screen.get_width() / 2, 8 * screen.get_height() / 20)
-        writeText("- An Ant", fontRules, (255, 255, 255), screen, screen.get_width() / 2, 17 * screen.get_height() / 20)
-        writeText("BUT remember .. the ant doesn't always have to leave a clue behind!)", fontRules, (255, 255, 255),
+        writeText("3. There are 5 possible options that can be uncovered: ", fonttiny, (255, 255, 255), screen,
+                  screen.get_width() / 2, 8 * screen.get_height() / 20)
+        writeText("- empty patch of soil", fonttiny, (255, 255, 255), screen, screen.get_width() / 2,
+                  9.5 * screen.get_height() / 20)
+        writeText("- A Pheromone (its colour can tell where the ant has been or will be)", fonttiny, (255, 255, 255),
+                  screen, screen.get_width() / 2, 11 * screen.get_height() / 20)
+        writeText("- An Ant", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 15.5 * screen.get_height() / 20)
+        writeText("BUT remember .. the ant doesn't always have to leave a clue behind!", fonttiny, (255, 255, 255),
                   screen, screen.get_width() / 2, 18.5 * screen.get_height() / 20)
 
-        Init.screen.blit(Init.ant, (8 * screen.get_width() / 20, 16.5 * screen.get_height() / 20))
-        pygame.draw.circle(Init.screen, yellow, (5 * screen.get_width() / 20, 13 * screen.get_height() / 20), 20)
-        pygame.draw.circle(Init.screen, orange, (5 * screen.get_width() / 20, 14.25 * screen.get_height() / 20), 20)
-        pygame.draw.circle(Init.screen, red, (5 * screen.get_width() / 20, 15.5 * screen.get_height() / 20), 20)
-
+        Init.screen.blit(ant, (8 * screen.get_width() / 20, 15 * screen.get_height() / 20))
 
         click = False
         for event in pygame.event.get():
@@ -385,25 +380,21 @@ def Rules():
                     click = True
 
         # Creating and Drawing back button
-        mx, my = pygame.mouse.get_pos()
-        Back = pygame.Rect(3 * screen.get_width() / 4, 7 * screen.get_height() / 10, screen.get_width() / 4,screen.get_height() / 10)
-        if Back.collidepoint((mx, my)):
+        colour = pygame.Rect(4.5*screen.get_width()/ 20, 12.75 * screen.get_height() / 20, 11 * screen.get_width() / 20, 2 * screen.get_height() / 20)
+        if colour.collidepoint((mx, my)):
             if click:
-                pygame.time.delay(500)
-                main_menu()
-        pygame.draw.rect(screen, green, Back)
-        writeText("Back", fontSmall, brown, screen, 4 * screen.get_width() / 5, 14.5 * screen.get_height() / 20)
+                Colours()
+        pygame.draw.rect(screen, green, colour)
+        writeText("Click here for the pheromone colours", fontSmall, brown, screen, 10*screen.get_width()/ 20, 13 * screen.get_height() / 20)
 
         # Creating and Drawing back button
-        mx, my = pygame.mouse.get_pos()
-        Back = pygame.Rect(3 * screen.get_width() / 4, 7 * screen.get_height() / 10, screen.get_width() / 4,
-                           screen.get_height() / 10)
+        Back = pygame.Rect(15 * screen.get_width() / 20, 15.5 * screen.get_height() / 20, 5* screen.get_width() / 20, 2 * screen.get_height() / 20)
         if Back.collidepoint((mx, my)):
             if click:
                 pygame.time.delay(500)
                 main_menu()
         pygame.draw.rect(screen, green, Back)
-        writeText("Back", fontSmall, brown, screen, 4 * screen.get_width() / 5, 14.5 * screen.get_height() / 20)
+        writeText("Back", fontSmall, brown, screen, 4 * screen.get_width() / 5, 16 * screen.get_height() / 20)
 
         pygame.display.update()
         mainClock.tick(60)
