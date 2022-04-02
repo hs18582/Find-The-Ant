@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249f9be2-349a-4d67-9e79-e4a868177b20" name="Default Changelist" comment="" />
+    <list default="true" id="249f9be2-349a-4d67-9e79-e4a868177b20" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Game/FindTheAnt.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game/FindTheAnt.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +174,7 @@
       <workItem from="1648227308033" duration="109000" />
       <workItem from="1648645599391" duration="1212000" />
       <workItem from="1648811097143" duration="5363000" />
-      <workItem from="1648908086332" duration="766000" />
+      <workItem from="1648908086332" duration="1066000" />
     </task>
     <task id="LOCAL-00001" summary="This is a test to change from Java to Python">
       <created>1640011911205</created>
@@ -377,7 +379,28 @@
       <option name="project" value="LOCAL" />
       <updated>1648908775293</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Adding Medium level">
+      <created>1648908910218</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1648908910218</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Adding Hard level">
+      <created>1648908979202</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1648908979203</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Refactoring Rules, to include pheromone colours in a different page">
+      <created>1648909114744</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1648909114744</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,9 +419,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Research and Create a frame" />
-    <MESSAGE value="Research and add Title to main menu. Entity file also made for common code" />
-    <MESSAGE value="Create and Draw buttons for the main menu" />
     <MESSAGE value="Adding a ant image to make the menu page friendly" />
     <MESSAGE value="Creating a Game function with black scree, and get rid of global variables" />
     <MESSAGE value="Creating a green grid, N has not be defined yet" />
@@ -421,7 +441,10 @@
     <MESSAGE value="Updating Entity.py" />
     <MESSAGE value="Printing level with title" />
     <MESSAGE value="Adding Easy level" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Easy level" />
+    <MESSAGE value="Adding Medium level" />
+    <MESSAGE value="Adding Hard level" />
+    <MESSAGE value="Refactoring Rules, to include pheromone colours in a different page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring Rules, to include pheromone colours in a different page" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FindTheAnt$FindTheAnt.coverage" NAME="FindTheAnt Coverage Results" MODIFIED="1643028566102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

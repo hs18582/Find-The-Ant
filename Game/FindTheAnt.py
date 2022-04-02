@@ -399,6 +399,70 @@ def Rules():
         pygame.display.update()
         mainClock.tick(60)
 ########################################################################################################################
+def Colours():
+    pygame.init()
+    mainClock = pygame.time.Clock()
+    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    ColourRunning = True
+
+    while ColourRunning:
+        screen.fill(black)
+
+        writeText("Pheromone colours:", fontTitle, (255, 255, 255), screen, screen.get_width() / 2, screen.get_height() / 20)
+
+        writeText("1 day: Red", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 3.5 * screen.get_height() / 20)
+        pygame.draw.circle(Init.screen, red, (12 * screen.get_width() / 20, 3.75 * screen.get_height() / 20), 20)
+
+        writeText("2 days: Orange", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 5 * screen.get_height() / 20)
+        pygame.draw.circle(Init.screen, orange, (12 * screen.get_width() / 20, 5.15 * screen.get_height() / 20), 20)
+
+        writeText("3 days: Yellow", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 6.5 * screen.get_height() / 20)
+        pygame.draw.circle(Init.screen, yellow, (12 * screen.get_width() / 20, 6.75 * screen.get_height() / 20), 20)
+
+        writeText("4 days: Green", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 8 * screen.get_height() / 20)
+        pygame.draw.circle(Init.screen, green, (12 * screen.get_width() / 20, 8.15 * screen.get_height() / 20), 20)
+
+        writeText("5 days: Blue", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 9.5 * screen.get_height() / 20)
+        pygame.draw.circle(Init.screen, blue, (12 * screen.get_width() / 20, 9.75 * screen.get_height() / 20), 20)
+
+        writeText("6 days: Light Blue", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 11 * screen.get_height() / 20)
+        pygame.draw.circle(Init.screen, light_blue, (12 * screen.get_width() / 20, 11.15 * screen.get_height() / 20), 20)
+
+        writeText("7 days: Pink", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 12.5 * screen.get_height() / 20)
+        pygame.draw.circle(Init.screen, pink, (12 * screen.get_width() / 20, 12.75 * screen.get_height() / 20), 20)
+
+        writeText("8 days: Purple", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 14 * screen.get_height() / 20)
+        pygame.draw.circle(Init.screen, purple, (12 * screen.get_width() / 20, 14.15 * screen.get_height() / 20), 20)
+
+        writeText("9 days: Grey", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 15.5 * screen.get_height() / 20)
+        pygame.draw.circle(Init.screen, grey, (12 * screen.get_width() / 20, 15.75 * screen.get_height() / 20), 20)
+
+        writeText("10 days: White", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 17 * screen.get_height() / 20)
+        pygame.draw.circle(Init.screen, white, (12 * screen.get_width() / 20, 17.15 * screen.get_height() / 20), 20)
+
+        writeText("To help you remember they are very similar to the colours the rainbow!", fonttiny, (255, 255, 255),
+                  screen, screen.get_width() / 2, 18.5 * screen.get_height() / 20)
+
+        click = False
+        for event in pygame.event.get():
+            if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+
+        # Creating and Drawing back button
+        mx, my = pygame.mouse.get_pos()
+        Back = pygame.Rect(3 * screen.get_width() / 4, 7 * screen.get_height() / 10, screen.get_width() / 4,
+                           screen.get_height() / 10)
+        if Back.collidepoint((mx, my)):
+            if click:
+                pygame.time.delay(500)
+                Rules()
+        pygame.draw.rect(screen, green, Back)
+        writeText("Back", fontSmall, brown, screen, 4 * screen.get_width() / 5, 14.5 * screen.get_height() / 20)
+
+        pygame.display.update()
+        mainClock.tick(60)
+########################################################################################################################
 class HighScore:
     pass
 
