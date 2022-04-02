@@ -1,6 +1,9 @@
-from Entity import *
+import csv
+import random
+import sys
 from pygame.locals import *
-import random, sys, csv
+from Entity import *
+
 
 class Init:
     def __init__(self):
@@ -22,10 +25,10 @@ class Init:
 
     def setN(self, n):
         self.n = n
-        self.colour = [[green for i in range(n)] for j in range(n)]
+        self.colour = [[green for _ in range(n)] for _ in range(n)]
         self.antLocation = [random.randint(0, n - 1), random.randint(0, n - 1)]
-        self.queueClicked = [[] for i in range(n)]
-        self.queueLocation = [[None for j in range(3)] for i in range(n)]
+        self.queueClicked = [[] for _ in range(n)]
+        self.queueLocation = [[None for _ in range(3)] for _ in range(n)]
 
     def getN(self):
         return self.n
@@ -38,12 +41,16 @@ class Init:
 
 
 Init = Init()
+
+
 ##########################################################################################################
 def write_to_file():
     with open("Highscore.csv", "w") as f:
         for i in range(3):
             f.write(str(Init.getHighscore(i)))
             f.write("\n")
+
+
 ##########################################################################################################
 def Level():
     pygame.init()
@@ -102,9 +109,6 @@ def Level():
 
         pygame.display.update()
         mainClock.tick(60)
-
-
-
 
 
 ########################################################################################
@@ -174,31 +178,14 @@ def Game():
             Winner()
         else:
             colours = [red, orange, yellow, green, blue, light_blue, pink, purple, grey, white]
-            for i in range(Init.getN()-1, -1, -1):
+            for i in range(Init.getN() - 1, -1, -1):
                 if Init.queueLocation[i][2] == True and [Init.queueLocation[i][0],
                                                          Init.queueLocation[i][1]] in Init.queueClicked:
                     x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
-                                Init.queueLocation[i][1] * (Init.width / Init.getN()))
+                            Init.queueLocation[i][1] * (Init.width / Init.getN()))
                     y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
-                                Init.queueLocation[i][0] * (Init.height / Init.getN()))
+                            Init.queueLocation[i][0] * (Init.height / Init.getN()))
                     pygame.draw.circle(Init.screen, colours[i], (x, y), 20)
-
-            # if Init.queueLocation[2][2] == True and [Init.queueLocation[2][0], Init.queueLocation[2][1]] in Init.queueClicked:
-            #     x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (Init.queueLocation[2][1] * (Init.width / Init.getN()))
-            #     y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (Init.queueLocation[2][0] * (Init.height / Init.getN()))
-            #     pygame.draw.circle(Init.screen, red, (x, y), 20)
-            # if Init.queueLocation[1][2] == True and [Init.queueLocation[1][0],Init.queueLocation[1][1]] in Init.queueClicked:
-            #     x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
-            #             Init.queueLocation[1][1] * (Init.width / Init.getN()))
-            #     y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
-            #             Init.queueLocation[1][0] * (Init.height / Init.getN()))
-            #     pygame.draw.circle(Init.screen, orange, (x, y), 20)
-            # if Init.queueLocation[0][2] == True and [Init.queueLocation[0][0],Init.queueLocation[0][1]] in Init.queueClicked:
-            #    x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
-            #             Init.queueLocation[0][1] * (Init.width / Init.getN()))
-            #    y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
-            #             Init.queueLocation[0][0] * (Init.height / Init.getN()))
-            #    pygame.draw.circle(Init.screen, yellow, (x, y), 20)
 
             for i in range(Init.getN()):
                 for j in range(Init.getN()):
@@ -278,10 +265,10 @@ def Pheromone():
     droppingPoint = 0
     # is the tipping point if number > 50 then drop if less hold( if num = 50 then 50% of being dropped
 
-    for z in range(Init.getN()-1, 0, -1):
+    for z in range(Init.getN() - 1, 0, -1):
         Init.queueLocation[z] = Init.queueLocation[z - 1]
     if random.randint(0, 100) >= droppingPoint:
-        for i in range(1, Init.getN()-1):
+        for i in range(1, Init.getN() - 1):
             if [Init.antLocation[0], Init.antLocation[1], True] == Init.queueLocation[i]:
                 Init.queueLocation[i][2] = False
         # if [Init.antLocation[0], Init.antLocation[1], True] == Init.queueLocation[1]:
@@ -296,7 +283,7 @@ def Pheromone():
 def playAgain():
     Init.mainClock = pygame.time.Clock()
     Init.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-    Init.colour = [[green for i in range(Init.getN())] for j in range(Init.getN())]
+    Init.colour = [[green for _ in range(Init.getN())] for _ in range(Init.getN())]
     Init.antLocation = [random.randint(0, Init.getN() - 1), random.randint(0, Init.getN() - 1)]
     Init.ant = pygame.image.load('Images/ant.png')
     Init.antmini = pygame.image.load('Images/antMini.png')  # https://www.pinclipart.com/maxpin/iTbwbmJ/
@@ -305,6 +292,7 @@ def playAgain():
     Init.height = 600
     Init.scoreList = []
     Init.running = True
+
 
 ##########################################################################################################
 
@@ -481,7 +469,7 @@ def HighScore():
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     HighscoreRunning = True
 
-    while HighscoreRunning == True:
+    while HighscoreRunning:
         screen.fill((0, 0, 0))
         mx, my = pygame.mouse.get_pos()
 
@@ -537,7 +525,7 @@ def Rules():
 
         writeText("Rules:", fontTitle, (255, 255, 255), screen, screen.get_width() / 2, screen.get_height() / 20)
         writeText("Objective: Find the ant by uncovering the boxes before time runs out!", fonttiny, (255, 255, 255),
-                  screen, screen.get_width() / 2, 3.5* screen.get_height() / 20)
+                  screen, screen.get_width() / 2, 3.5 * screen.get_height() / 20)
         writeText("1. The game ends either by finding the ant or the 3 minute timer runs out", fonttiny,
                   (255, 255, 255), screen, screen.get_width() / 2, 5 * screen.get_height() / 20)
         writeText("2. There are 3 levels: Easy, Medium and Hard", fonttiny, (255, 255, 255), screen,
@@ -548,7 +536,8 @@ def Rules():
                   9.5 * screen.get_height() / 20)
         writeText("- A Pheromone (its colour can tell where the ant has been or will be)", fonttiny, (255, 255, 255),
                   screen, screen.get_width() / 2, 11 * screen.get_height() / 20)
-        writeText("- An Ant", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 15.5 * screen.get_height() / 20)
+        writeText("- An Ant", fonttiny, (255, 255, 255), screen, screen.get_width() / 2,
+                  15.5 * screen.get_height() / 20)
         writeText("BUT remember .. the ant doesn't always have to leave a clue behind!", fonttiny, (255, 255, 255),
                   screen, screen.get_width() / 2, 18.5 * screen.get_height() / 20)
 
@@ -561,15 +550,18 @@ def Rules():
                     click = True
 
         # Creating and Drawing back button
-        colour = pygame.Rect(4.5*screen.get_width()/ 20, 12.75 * screen.get_height() / 20, 11 * screen.get_width() / 20, 2 * screen.get_height() / 20)
+        colour = pygame.Rect(4.5 * screen.get_width() / 20, 12.75 * screen.get_height() / 20,
+                             11 * screen.get_width() / 20, 2 * screen.get_height() / 20)
         if colour.collidepoint((mx, my)):
             if click:
                 Colours()
         pygame.draw.rect(screen, green, colour)
-        writeText("Click here for the pheromone colours", fontSmall, brown, screen, 10*screen.get_width()/ 20, 13 * screen.get_height() / 20)
+        writeText("Click here for the pheromone colours", fontSmall, brown, screen, 10 * screen.get_width() / 20,
+                  13 * screen.get_height() / 20)
 
         # Creating and Drawing back button
-        Back = pygame.Rect(15 * screen.get_width() / 20, 15.5 * screen.get_height() / 20, 5* screen.get_width() / 20, 2 * screen.get_height() / 20)
+        Back = pygame.Rect(15 * screen.get_width() / 20, 15.5 * screen.get_height() / 20, 5 * screen.get_width() / 20,
+                           2 * screen.get_height() / 20)
         if Back.collidepoint((mx, my)):
             if click:
                 pygame.time.delay(500)
@@ -591,36 +583,48 @@ def Colours():
     while ColourRunning:
         screen.fill(black)
 
-        writeText("Pheromone colours:", fontTitle, (255, 255, 255), screen, screen.get_width() / 2, screen.get_height() / 20)
+        writeText("Pheromone colours:", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                  screen.get_height() / 20)
 
-        writeText("1 day: Red", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 3.5 * screen.get_height() / 20)
+        writeText("1 day: Red", fonttiny, (255, 255, 255), screen, screen.get_width() / 2,
+                  3.5 * screen.get_height() / 20)
         pygame.draw.circle(Init.screen, red, (12 * screen.get_width() / 20, 3.75 * screen.get_height() / 20), 20)
 
-        writeText("2 days: Orange", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 5 * screen.get_height() / 20)
+        writeText("2 days: Orange", fonttiny, (255, 255, 255), screen, screen.get_width() / 2,
+                  5 * screen.get_height() / 20)
         pygame.draw.circle(Init.screen, orange, (12 * screen.get_width() / 20, 5.15 * screen.get_height() / 20), 20)
 
-        writeText("3 days: Yellow", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 6.5 * screen.get_height() / 20)
+        writeText("3 days: Yellow", fonttiny, (255, 255, 255), screen, screen.get_width() / 2,
+                  6.5 * screen.get_height() / 20)
         pygame.draw.circle(Init.screen, yellow, (12 * screen.get_width() / 20, 6.75 * screen.get_height() / 20), 20)
 
-        writeText("4 days: Green", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 8 * screen.get_height() / 20)
+        writeText("4 days: Green", fonttiny, (255, 255, 255), screen, screen.get_width() / 2,
+                  8 * screen.get_height() / 20)
         pygame.draw.circle(Init.screen, green, (12 * screen.get_width() / 20, 8.15 * screen.get_height() / 20), 20)
 
-        writeText("5 days: Blue", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 9.5 * screen.get_height() / 20)
+        writeText("5 days: Blue", fonttiny, (255, 255, 255), screen, screen.get_width() / 2,
+                  9.5 * screen.get_height() / 20)
         pygame.draw.circle(Init.screen, blue, (12 * screen.get_width() / 20, 9.75 * screen.get_height() / 20), 20)
 
-        writeText("6 days: Light Blue", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 11 * screen.get_height() / 20)
-        pygame.draw.circle(Init.screen, light_blue, (12 * screen.get_width() / 20, 11.15 * screen.get_height() / 20), 20)
+        writeText("6 days: Light Blue", fonttiny, (255, 255, 255), screen, screen.get_width() / 2,
+                  11 * screen.get_height() / 20)
+        pygame.draw.circle(Init.screen, light_blue, (12 * screen.get_width() / 20, 11.15 * screen.get_height() / 20),
+                           20)
 
-        writeText("7 days: Pink", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 12.5 * screen.get_height() / 20)
+        writeText("7 days: Pink", fonttiny, (255, 255, 255), screen, screen.get_width() / 2,
+                  12.5 * screen.get_height() / 20)
         pygame.draw.circle(Init.screen, pink, (12 * screen.get_width() / 20, 12.75 * screen.get_height() / 20), 20)
 
-        writeText("8 days: Purple", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 14 * screen.get_height() / 20)
+        writeText("8 days: Purple", fonttiny, (255, 255, 255), screen, screen.get_width() / 2,
+                  14 * screen.get_height() / 20)
         pygame.draw.circle(Init.screen, purple, (12 * screen.get_width() / 20, 14.15 * screen.get_height() / 20), 20)
 
-        writeText("9 days: Grey", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 15.5 * screen.get_height() / 20)
+        writeText("9 days: Grey", fonttiny, (255, 255, 255), screen, screen.get_width() / 2,
+                  15.5 * screen.get_height() / 20)
         pygame.draw.circle(Init.screen, grey, (12 * screen.get_width() / 20, 15.75 * screen.get_height() / 20), 20)
 
-        writeText("10 days: White", fonttiny, (255, 255, 255), screen, screen.get_width() / 2, 17 * screen.get_height() / 20)
+        writeText("10 days: White", fonttiny, (255, 255, 255), screen, screen.get_width() / 2,
+                  17 * screen.get_height() / 20)
         pygame.draw.circle(Init.screen, white, (12 * screen.get_width() / 20, 17.15 * screen.get_height() / 20), 20)
 
         writeText("To help you remember they are very similar to the colours the rainbow!", fonttiny, (255, 255, 255),
