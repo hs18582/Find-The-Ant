@@ -31,6 +31,26 @@ Init = Init()
 
 ########################################################################################################################
 ########################################################################################################################
+def Level():
+    pygame.init()
+
+    mainClock = pygame.time.Clock()
+    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    LevelRunning = True
+    while LevelRunning:
+        screen.fill(black)
+
+        writeText("Levels", fontTitle, (255, 255, 255), screen, screen.get_width() / 2, screen.get_height() / 20)
+        mx, my = pygame.mouse.get_pos()
+
+        click = False
+        for event in pygame.event.get():
+            if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+                    
+        pygame.display.update()
+        mainClock.tick(60)
 ########################################################################################################################
 def Game():
     Init.setN(3)  # setting a 3x3 grid

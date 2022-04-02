@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="249f9be2-349a-4d67-9e79-e4a868177b20" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/FindTheAnt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FindTheAnt.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/Images/Implementation/Pycharm.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation/Images/Implementation/Pycharm.JPG" afterDir="false" />
-    </list>
+    <list default="true" id="249f9be2-349a-4d67-9e79-e4a868177b20" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,6 +172,7 @@
       <workItem from="1648227308033" duration="109000" />
       <workItem from="1648645599391" duration="1212000" />
       <workItem from="1648811097143" duration="5363000" />
+      <workItem from="1648908086332" duration="445000" />
     </task>
     <task id="LOCAL-00001" summary="This is a test to change from Java to Python">
       <created>1640011911205</created>
@@ -359,7 +356,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648812693067</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Updating Entity.py">
+      <created>1648908206013</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1648908206013</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -378,7 +382,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="This is a test to change from Java to Python" />
     <MESSAGE value="Deleting 2 files not needed anymore" />
     <MESSAGE value="Deleting files not needed anymore from test run" />
     <MESSAGE value="Research and Create a frame" />
@@ -403,7 +406,8 @@
     <MESSAGE value="Adding Documentation files and image folder for Readme.md" />
     <MESSAGE value="Refactoring Readme.md and images" />
     <MESSAGE value="Refactoring and images for implementation report" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring and images for implementation report" />
+    <MESSAGE value="Updating Entity.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updating Entity.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FindTheAnt$FindTheAnt.coverage" NAME="FindTheAnt Coverage Results" MODIFIED="1643028566102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
