@@ -48,7 +48,19 @@ def Level():
             if event.type == MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
-                    
+
+        Easy = pygame.Rect(7 * screen.get_width() / 20, 4 * screen.get_height() / 20, 7 * screen.get_width() / 20,
+                           2 * screen.get_height() / 20)
+
+        if Easy.collidepoint((mx, my)):
+            if click:
+                Init.setN(3)
+                playAgain()
+                Game()
+
+        pygame.draw.rect(screen, green, Easy)
+        writeText("Easy", fontSmall, brown, screen, screen.get_width() / 2, screen.get_height() / 4.6)
+
         pygame.display.update()
         mainClock.tick(60)
 ########################################################################################################################
