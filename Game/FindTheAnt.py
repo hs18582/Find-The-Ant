@@ -479,7 +479,7 @@ def HighScore():
             screen.blit(antmini, (x, 16.8 * screen.get_height() / 20))
             x += 256
 
-        writeText("Levels", fontTitle, (255, 255, 255), screen, screen.get_width() / 2, screen.get_height() / 20)
+        writeText("Highscore", fontTitle, (255, 255, 255), screen, screen.get_width() / 2, screen.get_height() / 20)
 
         writeText("Easy mode:  " + str(Init.getHighscore(0)), fontSmall, brown, screen, screen.get_width() / 2,
                   screen.get_height() / 4.6)
