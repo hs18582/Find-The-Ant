@@ -1,36 +1,50 @@
 from Entity import *
 from pygame.locals import *
-import sys, random
+import random, sys, csv
 
 class Init:
     def __init__(self):
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-        self.n = 0
-        self.running = True
-        self.mainClock = pygame.time.Clock()
+        self.antFound = False
         self.colour = []
+        self.antLocation = []
         self.width = 600
         self.height = 600
-        self.antLocation = []
-        self.antFound = False
-        self.queueLocation = [[None for j in range(3)] for i in range(3)]
-        self.queueClicked = [[] for i in range(3)]
+        self.mainClock = pygame.time.Clock()
+        self.queueClicked = []
+        self.queueLocation = []
         self.ant = pygame.image.load('Images/ant.png')
+        self.antmini = pygame.image.load('Images/antMini.png')  # https://www.pinclipart.com/maxpin/iTbwbmJ/
         self.scoreList = []
+        self.n = 0
+        self.highscore = ["-", "-", "-"]
+        self.running = True
 
     def setN(self, n):
         self.n = n
         self.colour = [[green for i in range(n)] for j in range(n)]
         self.antLocation = [random.randint(0, n - 1), random.randint(0, n - 1)]
+        self.queueClicked = [[] for i in range(n)]
+        self.queueLocation = [[None for j in range(3)] for i in range(n)]
 
     def getN(self):
         return self.n
 
+    def setHighscore(self, highscore, difficulty):
+        self.highscore[difficulty] = highscore
+
+    def getHighscore(self, difficulty):
+        return self.highscore[difficulty]
+
 
 Init = Init()
-
-########################################################################################################################
-########################################################################################################################
+##########################################################################################################
+def write_to_file():
+    with open("Highscore.csv", "w") as f:
+        for i in range(3):
+            f.write(str(Init.getHighscore(i)))
+            f.write("\n")
+##########################################################################################################
 def Level():
     pygame.init()
 
@@ -42,6 +56,12 @@ def Level():
 
         writeText("Levels", fontTitle, (255, 255, 255), screen, screen.get_width() / 2, screen.get_height() / 20)
         mx, my = pygame.mouse.get_pos()
+
+        x = 0
+        antmini = pygame.image.load('Images/antMini.png')  # https://www.pinclipart.com/maxpin/iTbwbmJ/
+        for i in range(round(screen.get_width() / 200)):
+            screen.blit(antmini, (x, 16.8 * screen.get_height() / 20))
+            x += 256
 
         click = False
         for event in pygame.event.get():
@@ -71,8 +91,6 @@ def Level():
                 Init.setN(10)
                 playAgain()
                 Game()
-
-
         pygame.draw.rect(screen, green, Easy)
         writeText("Easy", fontSmall, brown, screen, screen.get_width() / 2, screen.get_height() / 4.6)
 
@@ -84,25 +102,64 @@ def Level():
 
         pygame.display.update()
         mainClock.tick(60)
-########################################################################################################################
+
+
+
+
+
+########################################################################################
 def Game():
-    Init.setN(3)  # setting a 3x3 grid
+    start_ticks = pygame.time.get_ticks()  # starter tick
     pygame.init()
+
     while Init.running:
         Init.screen.fill(black)
         mx, my = pygame.mouse.get_pos()
         list_buttons = Grid()
+
         count = 0
-        start_ticks = pygame.time.get_ticks()
+        x = 0
 
         seconds = (pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
         if seconds > 180:  # if more than 10 seconds close the game
             pygame.display.update()
             Loser()
 
+        for i in range(round(Init.screen.get_width() / 200)):
+            Init.screen.blit(Init.antmini, (x, 16.8 * Init.screen.get_height() / 20))
+            x += 256
+
         Tscore = len(Init.scoreList)
         writeText("Score:  " + str(Tscore), fontSmall, green, Init.screen, 3 * Init.screen.get_width() / 4,
                   Init.screen.get_height() / 20)
+
+        if Init.getN() == 3:
+            writeText("Highscore:  " + str(Init.getHighscore(0)), fontSmall, green, Init.screen,
+                      Init.screen.get_width() / 4, Init.screen.get_height() / 20)
+        elif Init.getN() == 5:
+            writeText("Highscore:  " + str(Init.getHighscore(1)), fontSmall, green, Init.screen,
+                      Init.screen.get_width() / 4, Init.screen.get_height() / 20)
+        elif Init.getN() == 10:
+            writeText("Highscore:  " + str(Init.getHighscore(2)), fontSmall, green, Init.screen,
+                      Init.screen.get_width() / 4, Init.screen.get_height() / 20)
+
+        click = False
+        for event in pygame.event.get():
+            if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+
+        # Creating and Drawing back button
+        Back = pygame.Rect(3 * Init.screen.get_width() / 4, 7 * Init.screen.get_height() / 10,
+                           Init.screen.get_width() / 4,
+                           Init.screen.get_height() / 10)
+        if Back.collidepoint((mx, my)):
+            if click:
+                pygame.time.delay(500)
+                main_menu()
+        pygame.draw.rect(Init.screen, green, Back)
+        writeText("Back", fontSmall, brown, Init.screen, 4 * Init.screen.get_width() / 5,
+                  14.5 * Init.screen.get_height() / 20)
 
         if Init.antFound:
             x = ((Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
@@ -116,55 +173,54 @@ def Game():
             pygame.time.delay(2000)
             Winner()
         else:
-            if Init.queueLocation[2][2] == True and [Init.queueLocation[2][0],
-                                                     Init.queueLocation[2][1]] in Init.queueClicked:
-                x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
-                        Init.queueLocation[2][1] * (Init.width / Init.getN()))
-                y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
-                        Init.queueLocation[2][0] * (Init.height / Init.getN()))
-                pygame.draw.circle(Init.screen, red, (x, y), 20)
+            colours = [red, orange, yellow, green, blue, light_blue, pink, purple, grey, white]
+            for i in range(Init.getN()-1, -1, -1):
+                if Init.queueLocation[i][2] == True and [Init.queueLocation[i][0],
+                                                         Init.queueLocation[i][1]] in Init.queueClicked:
+                    x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
+                                Init.queueLocation[i][1] * (Init.width / Init.getN()))
+                    y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
+                                Init.queueLocation[i][0] * (Init.height / Init.getN()))
+                    pygame.draw.circle(Init.screen, colours[i], (x, y), 20)
 
-            if Init.queueLocation[1][2] == True and [Init.queueLocation[1][0],
-                                                     Init.queueLocation[1][1]] in Init.queueClicked:
-                x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
-                        Init.queueLocation[1][1] * (Init.width / Init.getN()))
-                y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
-                        Init.queueLocation[1][0] * (Init.height / Init.getN()))
-                pygame.draw.circle(Init.screen, orange, (x, y), 20)
+            # if Init.queueLocation[2][2] == True and [Init.queueLocation[2][0], Init.queueLocation[2][1]] in Init.queueClicked:
+            #     x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (Init.queueLocation[2][1] * (Init.width / Init.getN()))
+            #     y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (Init.queueLocation[2][0] * (Init.height / Init.getN()))
+            #     pygame.draw.circle(Init.screen, red, (x, y), 20)
+            # if Init.queueLocation[1][2] == True and [Init.queueLocation[1][0],Init.queueLocation[1][1]] in Init.queueClicked:
+            #     x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
+            #             Init.queueLocation[1][1] * (Init.width / Init.getN()))
+            #     y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
+            #             Init.queueLocation[1][0] * (Init.height / Init.getN()))
+            #     pygame.draw.circle(Init.screen, orange, (x, y), 20)
+            # if Init.queueLocation[0][2] == True and [Init.queueLocation[0][0],Init.queueLocation[0][1]] in Init.queueClicked:
+            #    x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
+            #             Init.queueLocation[0][1] * (Init.width / Init.getN()))
+            #    y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
+            #             Init.queueLocation[0][0] * (Init.height / Init.getN()))
+            #    pygame.draw.circle(Init.screen, yellow, (x, y), 20)
 
-            if Init.queueLocation[0][2] == True and [Init.queueLocation[0][0],
-                                                     Init.queueLocation[0][1]] in Init.queueClicked:
-                x = (Init.width / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 300)) + (
-                        Init.queueLocation[0][1] * (Init.width / Init.getN()))
-                y = (Init.height / (2 * Init.getN()) + ((Init.screen.get_width() / 2) - 625)) + (
-                        Init.queueLocation[0][0] * (Init.height / Init.getN()))
-                pygame.draw.circle(Init.screen, yellow, (x, y), 20)
+            for i in range(Init.getN()):
+                for j in range(Init.getN()):
+                    if list_buttons[i][j].collidepoint((mx, my)):
+                        if click and [i, j] not in Init.queueClicked:
+                            ButtonOpen(i, j)
 
-        click = False
-        for event in pygame.event.get():
-            if event.type == MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    click = True
+                            if Init.queueClicked[Init.getN() - 1]:
+                                ButtonClose(Init.queueClicked[Init.getN() - 1][0],
+                                            Init.queueClicked[Init.getN() - 1][1])
+                            for z in range(Init.getN() - 1, 0, -1):
+                                Init.queueClicked[z] = Init.queueClicked[z - 1]
+                            Init.queueClicked[0] = [i, j]
+                            count += 1
+                            Init.scoreList.append(count)
 
-        for i in range(Init.getN()):
-            for j in range(Init.getN()):
-                if list_buttons[i][j].collidepoint((mx, my)):
-                    if click and [i, j] not in Init.queueClicked:
-                        ButtonOpen(i, j)
+                            if not Init.antFound:
+                                Pheromone()
+                                MoveAnt()
 
-                        if Init.queueClicked[2]:
-                            ButtonClose(Init.queueClicked[2][0], Init.queueClicked[2][1])
-                        for z in range(2, 0, -1):
-                            Init.queueClicked[z] = Init.queueClicked[z - 1]
-                        Init.queueClicked[0] = [i, j]
-                        count += 1
-                        Init.scoreList.append(count)
-
-                        if not Init.antFound:
-                            MoveAnt()
-
-    pygame.display.update()
-    Init.mainClock.tick(60)
+        pygame.display.update()
+        Init.mainClock.tick(60)
 
 
 def Grid():
@@ -219,46 +275,56 @@ def MoveAnt():
 
 
 def Pheromone():
-    droppingPoint = 50
+    droppingPoint = 0
     # is the tipping point if number > 50 then drop if less hold( if num = 50 then 50% of being dropped
 
-    for z in range(2, 0, -1):
+    for z in range(Init.getN()-1, 0, -1):
         Init.queueLocation[z] = Init.queueLocation[z - 1]
     if random.randint(0, 100) >= droppingPoint:
-        if [Init.antLocation[0], Init.antLocation[1], True] == Init.queueLocation[1]:
-            Init.queueLocation[1][2] = False
-        if [Init.antLocation[0], Init.antLocation[1], True] == Init.queueLocation[2]:
-            Init.queueLocation[2][2] = False
+        for i in range(1, Init.getN()-1):
+            if [Init.antLocation[0], Init.antLocation[1], True] == Init.queueLocation[i]:
+                Init.queueLocation[i][2] = False
+        # if [Init.antLocation[0], Init.antLocation[1], True] == Init.queueLocation[1]:
+        #     Init.queueLocation[1][2] = False
+        # if [Init.antLocation[0], Init.antLocation[1], True] == Init.queueLocation[2]:
+        #     Init.queueLocation[2][2] = False
         Init.queueLocation[0] = [Init.antLocation[0], Init.antLocation[1], True]
     else:
         Init.queueLocation[0] = [Init.antLocation[0], Init.antLocation[1], False]
 
 
 def playAgain():
-    Init.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-    Init.running = True
     Init.mainClock = pygame.time.Clock()
+    Init.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     Init.colour = [[green for i in range(Init.getN())] for j in range(Init.getN())]
+    Init.antLocation = [random.randint(0, Init.getN() - 1), random.randint(0, Init.getN() - 1)]
+    Init.ant = pygame.image.load('Images/ant.png')
+    Init.antmini = pygame.image.load('Images/antMini.png')  # https://www.pinclipart.com/maxpin/iTbwbmJ/
+    Init.antFound = False
     Init.width = 600
     Init.height = 600
-    Init.antLocation = [random.randint(0, Init.getN() - 1), random.randint(0, Init.getN() - 1)]
-    Init.antFound = False
-    Init.queueLocation = [[None for j in range(3)] for i in range(3)]
-    Init.queueClicked = [[] for i in range(3)]
-    Init.ant = pygame.image.load('Images/ant.png')
     Init.scoreList = []
-    # Init.antmini = pygame.image.load('Images/antMini.png')  # https://www.pinclipart.com/maxpin/iTbwbmJ/
+    Init.running = True
 
+##########################################################################################################
 
-########################################################################################################################
 def Winner():
     pygame.init()
+
+    antmini = pygame.image.load('Images/antMini.png')  # https://www.pinclipart.com/maxpin/iTbwbmJ/
     mainClock = pygame.time.Clock()
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     Tscore = len(Init.scoreList)
 
-    while True:
+    WinnerRunning = True
+
+    while WinnerRunning:
         screen.fill((0, 0, 0))
+
+        x = 0
+        for i in range(round(screen.get_width() / 200)):
+            screen.blit(antmini, (x, 16.8 * screen.get_height() / 20))
+            x += 256
 
         click = False
         for event in pygame.event.get():
@@ -266,10 +332,66 @@ def Winner():
                 if event.button == 1:
                     click = True
 
-        writeText("Your score is: ", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
-                  8 * screen.get_height() / 20)
-        writeText(str(Tscore), fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
-                  screen.get_height() / 2)
+        if Init.getN() == 3:
+            if int(Tscore) <= int(Init.getHighscore(0)):
+                Init.setHighscore(Tscore, 0)
+                # write_to_file()
+                writeText("Congratulations! New Highscore!", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          screen.get_height() / 20)
+                writeText("Your score is: ", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          8 * screen.get_height() / 20)
+                writeText(str(Tscore), fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          screen.get_height() / 2)
+            else:
+                writeText("Congratulations!", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          screen.get_height() / 20)
+                writeText("Your score is: ", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          8 * screen.get_height() / 20)
+                writeText(str(Tscore), fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          screen.get_height() / 2)
+                writeText("HighScore: " + str(Init.getHighscore(0)), fontSmall, (255, 255, 255), screen,
+                          screen.get_width() / 2,
+                          14 * screen.get_height() / 20)
+
+        if Init.getN() == 5:
+            if int(Tscore) <= int(Init.getHighscore(1)):
+                Init.setHighscore(Tscore, 1)
+                writeText("Congratulations! New Highscore!", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          screen.get_height() / 20)
+                writeText("Your score is: ", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          8 * screen.get_height() / 20)
+                writeText(str(Tscore), fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          screen.get_height() / 2)
+            else:
+                writeText("Congratulations!", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          screen.get_height() / 20)
+                writeText("Your score is: ", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          8 * screen.get_height() / 20)
+                writeText(str(Tscore), fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          screen.get_height() / 2)
+                writeText("HighScore: " + str(Init.getHighscore(1)), fontSmall, (255, 255, 255), screen,
+                          screen.get_width() / 2,
+                          14 * screen.get_height() / 20)
+
+        if Init.getN() == 10:
+            if int(Tscore) <= int(Init.getHighscore(2)):
+                Init.setHighscore(Tscore, 2)
+                writeText("Congratulations! New Highscore!", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          screen.get_height() / 20)
+                writeText("Your score is: ", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          8 * screen.get_height() / 20)
+                writeText(str(Tscore), fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          screen.get_height() / 2)
+            else:
+                writeText("Congratulations!", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          screen.get_height() / 20)
+                writeText("Your score is: ", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          8 * screen.get_height() / 20)
+                writeText(str(Tscore), fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
+                          screen.get_height() / 2)
+                writeText("Highscore: " + str(Init.getHighscore(2)), fontSmall, (255, 255, 255), screen,
+                          screen.get_width() / 2,
+                          14 * screen.get_height() / 20)
 
         # Creating and Drawing back button
         mx, my = pygame.mouse.get_pos()
@@ -277,6 +399,7 @@ def Winner():
                            screen.get_height() / 10)
         if Back.collidepoint((mx, my)):
             if click:
+                write_to_file()
                 pygame.time.delay(500)
                 main_menu()
         pygame.draw.rect(screen, green, Back)
@@ -286,6 +409,7 @@ def Winner():
                             screen.get_height() / 10)
         if Reset.collidepoint((mx, my)):
             if click:
+                write_to_file()
                 pygame.time.delay(500)
                 playAgain()
                 Game()
@@ -296,12 +420,13 @@ def Winner():
         mainClock.tick(60)
 
 
-########################################################################################################################
+##########################################################################################################
 def Loser():
     mainClock = pygame.time.Clock()
     pygame.init()
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     LoserRunning = True
+    antmini = pygame.image.load('Images/antMini.png')  # https://www.pinclipart.com/maxpin/iTbwbmJ/
 
     while LoserRunning:
         screen.fill((0, 0, 0))
@@ -310,6 +435,11 @@ def Loser():
         writeText("Sorry you didnt find the ant in time! ", fontTitle, (255, 255, 255), screen, screen.get_width() / 2,
                   8 * screen.get_height() / 20)
 
+        x = 0
+        for i in range(round(screen.get_width() / 200)):
+            screen.blit(antmini, (x, 16.8 * screen.get_height() / 20))
+            x += 256
+
         click = False
         for event in pygame.event.get():
             if event.type == MOUSEBUTTONDOWN:
@@ -322,6 +452,7 @@ def Loser():
                            screen.get_height() / 10)
         if Back.collidepoint((mx, my)):
             if click:
+                write_to_file()
                 pygame.time.delay(500)
                 main_menu()
         pygame.draw.rect(screen, green, Back)
@@ -331,6 +462,7 @@ def Loser():
                             screen.get_height() / 10)
         if Reset.collidepoint((mx, my)):
             if click:
+                write_to_file()
                 pygame.time.delay(500)
                 playAgain()
                 Game()
@@ -341,7 +473,56 @@ def Loser():
         mainClock.tick(60)
 
 
-########################################################################################################################
+##########################################################################################################
+def HighScore():
+    pygame.init()
+
+    mainClock = pygame.time.Clock()
+    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    HighscoreRunning = True
+
+    while HighscoreRunning == True:
+        screen.fill((0, 0, 0))
+        mx, my = pygame.mouse.get_pos()
+
+        x = 0
+        antmini = pygame.image.load('Images/antMini.png')  # https://www.pinclipart.com/maxpin/iTbwbmJ/
+        for i in range(round(screen.get_width() / 200)):
+            screen.blit(antmini, (x, 16.8 * screen.get_height() / 20))
+            x += 256
+
+        writeText("Levels", fontTitle, (255, 255, 255), screen, screen.get_width() / 2, screen.get_height() / 20)
+
+        writeText("Easy mode:  " + str(Init.getHighscore(0)), fontSmall, brown, screen, screen.get_width() / 2,
+                  screen.get_height() / 4.6)
+
+        writeText("Medium mode:  " + str(Init.getHighscore(1)), fontSmall, green, screen, screen.get_width() / 2,
+                  screen.get_height() / 2.12)
+
+        writeText("Hard mode:  " + str(Init.getHighscore(2)), fontSmall, brown, screen, screen.get_width() / 2,
+                  screen.get_height() / 1.4)
+
+        click = False
+        for event in pygame.event.get():
+            if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+
+        # Creating and Drawing back button
+        Back = pygame.Rect(3 * screen.get_width() / 4, 7 * screen.get_height() / 10, screen.get_width() / 4,
+                           screen.get_height() / 10)
+        if Back.collidepoint((mx, my)):
+            if click:
+                pygame.time.delay(500)
+                main_menu()
+        pygame.draw.rect(screen, green, Back)
+        writeText("Back", fontSmall, brown, screen, 4 * screen.get_width() / 5, 14.5 * screen.get_height() / 20)
+
+        pygame.display.update()
+        mainClock.tick(60)
+
+
+#############################################################################
 def Rules():
     pygame.init()
 
@@ -398,7 +579,9 @@ def Rules():
 
         pygame.display.update()
         mainClock.tick(60)
-########################################################################################################################
+
+
+##########################################################################################################
 def Colours():
     pygame.init()
     mainClock = pygame.time.Clock()
@@ -462,9 +645,6 @@ def Colours():
 
         pygame.display.update()
         mainClock.tick(60)
-########################################################################################################################
-class HighScore:
-    pass
 
 
 ########################################################################################################################
@@ -473,9 +653,16 @@ def main_menu():
     pygame.init()
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
+    with open("Highscore.csv", "r") as f:
+        file_read = csv.reader(f)
+        Init.highscore = list(file_read)
+    for i in range(len(Init.highscore)):
+        numeric_filter = filter(str.isdigit, Init.highscore[i])
+        Init.highscore[i] = int("".join(numeric_filter))
+
     while True:
 
-        screen.fill(black)
+        screen.fill((0, 0, 0))
         ant = pygame.image.load('Images/antMain.png')
 
         writeText("Find The Ant", fontTitle, brown, screen, 3 * screen.get_width() / 4, screen.get_height() / 20)
@@ -498,7 +685,7 @@ def main_menu():
 
         if Start.collidepoint((mx, my)):
             if click:
-                Game()
+                Level()
         if Instruction.collidepoint((mx, my)):
             if click:
                 Rules()
@@ -529,3 +716,4 @@ def main_menu():
 
 
 main_menu()
+#####################################################
