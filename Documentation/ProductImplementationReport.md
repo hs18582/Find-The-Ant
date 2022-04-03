@@ -47,3 +47,9 @@ The order is the following:
 * Rules function
 * Pheromone colours function
 * Main menu function
+
+## Diagrams
+### Use Case Diagram
+![picture](Documentation/Images/Implementation/Use Case.PNG)
+### Game Flowchart
+![picture](Documentation/Images/Implementation/Flowchart.JPG)
