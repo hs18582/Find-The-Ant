@@ -50,6 +50,6 @@ The order is the following:
 
 ## Diagrams
 ### Use Case Diagram
-![picture](Documentation/Images/Implementation/Use Case.PNG)
+![picture](Documentation/Images/Implementation/UseCase.png)
 ### Game Flowchart
-![picture](Documentation/Images/Implementation/Flowchart.JPG)
+![picture](Documentation/Images/Implementation/Flowchart.jpg)
