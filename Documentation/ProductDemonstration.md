@@ -1,15 +1,15 @@
 # Product Demonstration
 
 # List of Contents
-* [Controls](# Game Controls)  
-* [Main Menu](# Main Menu)  
-* [Level Easy](# Level Easy and Finding the Ant)
-* [Level Medium](# Level Medium and Pheromones) 
-* [Level Hard](# Level Hard and scoring) 
-* [Winner](# Winner) 
-* [Rules](# Rules)
-* [Pheromone Colours](# Pheromone Colours) 
-* [Highscore](# Highscore) 
+* [Controls](#game-controls)  
+* [Main Menu](#main-menu)  
+* [Level Easy](#level-easy-and-finding-the-ant)
+* [Level Medium](#level-medium-and-pheromones) 
+* [Level Hard](#level-hard-and-scoring) 
+* [Winner](#winner) 
+* [Rules](#rules)
+* [Pheromone Colours](#-pheromone-colours) 
+* [Highscore](#highscore) 
 
 # Game Controls
 Mouse
@@ -55,7 +55,3 @@ Mouse
 
 # Highscore
 ![picture](Documentation/Images/Documentation/Highscore.png)
-
-#Gameplay
-[Gameplay Video](https://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_hamsini/-/blob/77d6f15383c20906d37303ee2930e0fffb031864/Documentation/Images/Documentation/Gameplay.mp4)
-
