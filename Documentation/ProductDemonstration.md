@@ -16,7 +16,6 @@ Mouse
 
 # Main Menu
 #### This is Main-Menu where the user chooses between starting the games, seeing the rules, viewing the highscore for each level and quitting the game
-
 ![picture](Documentation/Images/Documentation/MainMenu.png)
 
 # Levels
@@ -29,7 +28,6 @@ Mouse
 
 # Level Easy and Finding the Ant
 #### Level Easy is a 3 by 3 grid. The user has to click on the grid to uncover what is under the box and on this level only 3 boxes are open at once. The game is won when the ant is found as pictured below
-
 ![picture](Documentation/Images/Documentation/Easy.png)
 
 # Level Medium and Pheromones
@@ -46,7 +44,6 @@ Mouse
 
 # Loser
 #### The loser of the game is when the user is unable to find the ant within the 3 minute timer.
-
 ![picture](Documentation/Images/Documentation/Loser.png)
 
 # Rules
@@ -58,3 +55,7 @@ Mouse
 
 # Highscore
 ![picture](Documentation/Images/Documentation/Highscore.png)
+
+#Gameplay
+[Gameplay Video](https://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_hamsini/-/blob/77d6f15383c20906d37303ee2930e0fffb031864/Documentation/Images/Documentation/Gameplay.mp4)
+
