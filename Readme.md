@@ -20,6 +20,7 @@ This game was created for CE301 Capstone Project module, based on the Project Ch
 # Documentation
 The [Documentation](https://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_hamsini/-/tree/master/Documentation) directory contains the following:
 - [Final Report](https://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_hamsini/-/blob/master/Documentation/CE301%20Final%20Report%20(1804954).docx)
+- [Project Poster](https://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_hamsini/-/blob/1d5d7828989df44856804370d7744d6d63d18f5b/Documentation/Poster.pptx)
 - [Project Introduction](https://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_hamsini/-/blob/master/Documentation/Project%20introduction.docx)
 - [Product Demonstration](https://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_hamsini/-/blob/master/Documentation/ProductDemonstration.mdhttps://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_hamsini/-/blob/master/Documentation/ProductDemonstration.md)
 - [Product Implementation Report](https://cseegit.essex.ac.uk/ce301_21-22/CE301_shivakumar_hamsini/-/blob/master/Documentation/ProductImplementationReport.md)
